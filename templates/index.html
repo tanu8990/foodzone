@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    
+    
+    .img-container {
+      float: left;
+      
+    
+    }
+    
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    .image {
+  transition: transform 0.3s ease-in-out; 
+           }
+
+.image:hover {
+  transform: scale(0.9); 
+             }
+             .zoom {
+  padding: 50px;
+
+  transition: transform .2s; 
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+.zoom:hover {
+    transform: scale(1.5);
+    .buttons a{
+            font-weight: bold;
+    }
+    }
+    </style>
+
+
+        <!-- Carousel Start -->
+        <div class="carousel">
+            <div class="container-fluid">
+                <div class="owl-carousel">
+                    <div class="carousel-item">
+                        <div class="carousel-img">
+                            <img src="/static/img/carousel-1.jpg" alt="Image">
+                        </div>
+                        <div class="carousel-text">
+                            <h1>Best <span>Quality</span> Ingredients</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet elit. Phasellus ut mollis mauris. Vivamus egestas eleifend dui ac consequat at lectus in malesuada
+                            </p>
+                            <div class="carousel-btn">
+                                <a class="btn custom-btn" href="{% url 'menu' %}">View Menu</a>
+                                <a class="btn custom-btn" href="{% url 'booking' %}">Book Table</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-img">
+                            <img src="/static/img/carousel-2.jpg" alt="Image">
+                        </div>
+                        <div class="carousel-text">
+                            <h1>World’s <span>Best</span> Chef</h1>
+                            <p>
+                                Morbi sagittis turpis id suscipit feugiat. Suspendisse eu augue urna. Morbi sagittis, orci sodales varius fermentum, tortor
+                            </p>
+                            <div class="carousel-btn">
+                                <a class="btn custom-btn" href="{% url 'menu' %}">View Menu</a>
+                                <a class="btn custom-btn" href="{% url 'booking' %}">Book Table</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-img">
+                            <img src="/static/img/carousel-3.jpg" alt="Image">
+                        </div>
+                        <div class="carousel-text">
+                            <h1>Fastest Order <span>Delivery</span></h1>
+                            <p>
+                                Sed ultrices, est eget feugiat accumsan, dui nibh egestas tortor, ut rhoncus nibh ligula euismod quam. Proin pellentesque odio
+                            </p>
+                            <div class="carousel-btn">
+                                <a class="btn custom-btn" href="{% url 'menu' %}">View Menu</a>
+                                <a class="btn custom-btn" href="{% url 'booking' %}">Book Table</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+               <!-- Food Start -->
+               <div class="food">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="food-item">
+                                <i class="flaticon-burger"></i>
+                                <h2>Burgers</h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem. 
+                                </p>
+                                <a href="{% url 'menu' %}">View Menu</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="food-item">
+                                <i class="flaticon-snack"></i>
+                                <h2>Snacks</h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem. 
+                                </p>
+                                <a href="{% url 'menu' %}">View Menu</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="food-item">
+                                <i class="flaticon-cocktail"></i>
+                                <h2>Beverages</h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem. 
+                                </p>
+                                <a href="{% url 'menu' %}">View Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Food End -->
+            
+            
+            <!-- Menu Start -->
+            <div class="container ">
+                {% for x, y in products.items %}
+    
+    
+                    <div class="d-flex pt-3">
+                        <h3>{{x.category_name}}</h3><br>
+                        <a href="{% url 'menu' %}" class=" pt-2 mx-auto ">View More..</a>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    {% for p in y %}
+                    
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body">
+                              
+                            <img src="{{p.product_image.url}}" width="100px" height="150px" class="card-img-top " alt="...">
+                            </div>
+                            <div class="card-footer d-flex">
+                                <p><b>{{p.product_name | upper}}</b></p>
+                                <p class="ms-auto">Rs {{p.product_price}}</p>
+    
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                    </div>
+    
+                {% endfor %}
+            </div>
+            <!--Menu End-->
+            
+        
+       
+        
+
+        <!-- About Start -->
+        <div class="about">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about-img">
+                            <img src="/static/img/about.jpg" alt="Image">
+                            <button type="button" class="btn-play" data-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-content">
+                            <div class="section-header">
+                                <p>About Us</p>
+                                <h2>Cooking Since 1990</h2>
+                            </div>
+                            <div class="about-text">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non blandit.
+                                </p>
+                                <a class="btn custom-btn" href="">Book A Table</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+        
+        
+        <!-- Video Modal Start-->
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>        
+                        <!-- 16:9 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Video Modal End -->
+        
+        
+        <!-- Feature Start -->
+        <div class="feature">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="section-header">
+                            <p>Why Choose Us</p>
+                            <h2>Our Key Features</h2>
+                        </div>
+                        <div class="feature-text">
+                            <div class="feature-img">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="/static/img/feature-1.jpg" alt="Image">
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="/static/img/feature-2.jpg" alt="Image">
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="/static/img/feature-3.jpg" alt="Image">
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="/static/img/feature-4.jpg" alt="Image">
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet consec adipis elit. Phasel nec preti mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor, auctor id gravida condime, viverra quis sem. Curabit non nisl nec nisi sceleri maximus 
+                            </p>
+                            <a class="btn custom-btn" href="{% url 'booking' %}">Book A Table</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="feature-item">
+                                    <i class="flaticon-cooking"></i>
+                                    <h3>World’s best Chef</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput metus tortor
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="feature-item">
+                                    <i class="flaticon-vegetable"></i>
+                                    <h3>Natural ingredients</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput metus tortor
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="feature-item">
+                                    <i class="flaticon-medal"></i>
+                                    <h3>Best quality products</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput metus tortor
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="feature-item">
+                                    <i class="flaticon-meat"></i>
+                                    <h3>Fresh vegetables & Meet</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput metus tortor
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="feature-item">
+                                    <i class="flaticon-courier"></i>
+                                    <h3>Fastest door delivery</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput metus tortor
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="feature-item">
+                                    <i class="flaticon-fruits-and-vegetables"></i>
+                                    <h3>Ground beef & Low fat</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulput metus tortor
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Feature End -->
+        
+        
+ 
+        <!-- Team Start -->
+        <div class="team">
+            <div class="container ">
+                <div class="section-header text-center">
+                    <p>Our Team</p>
+                    <h2>Our Master Chef</h2>
+                </div>
+                <div class="clearfix">
+                    {% for t in team %}
+                    <div class="img-container p-5 ">
+                     <img src="{{t.chef_image.url}}" width="100px" height="150px" class="card-img-top card-header zoom" alt="...">
+                     <p class="card-body">{{t.chef_name}}</p>
+                     <p class="card-footer">{{t.chef_designation}}</p>
+                    </div>
+
+                    {% endfor %}
+                </div>
+                
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+        
+        
+     
+        
+        <!-- Contact Start -->
+        <div class="contact">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Contact Us</p>
+                    <h2>Contact For Any Query</h2>
+                </div>
+                <div class="row align-items-center contact-information">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="contact-info">
+                            <div class="contact-icon">
+                                <i class="fa fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Address</h3>
+                                <p>123 Street, NY, USA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="contact-info">
+                            <div class="contact-icon">
+                                <i class="fa fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Call Us</h3>
+                                <p>+012 345 6789</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="contact-info">
+                            <div class="contact-icon">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Email Us</h3>
+                                <p>info@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="contact-info">
+                            <div class="contact-icon">
+                                <i class="fa fa-share"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Follow Us</h3>
+                                <div class="contact-social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row contact-form">
+                    <div class="col-md-6">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1600663868074!5m2!1sen!2sbd" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+
+     
+
+
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+{% endblock %}
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/lib/easing/easing.min.js"></script>
+        <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/static/lib/tempusdominus/js/moment.min.js"></script>
+        <script src="/static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        
+        <!-- Contact Javascript File -->
+        <script src="/static/mail/jqBootstrapValidation.min.js"></script>
+        <script src="/static/mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="/static/js/main.js"></script>
+    </body>
+</html>

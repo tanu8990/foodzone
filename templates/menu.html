@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.zoom {
+    padding: 50px;
+  
+    transition: transform .2s; 
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  .zoom:hover {
+      transform: scale(1.5);
+      .buttons a{
+              font-weight: bold;
+      }
+      }
+</style>
+        <!-- Page Header Start -->
+        <div class="page-header mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Food Menu</h2>
+                    </div>
+                    <div class="col-12">
+                        <a href="">Home</a>
+                        <a href="">Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+       <div class="row mx-5">
+        <div class="col-lg-3  mt-3 mx-auto">
+            <div class="list-group">
+                <a href="{% url 'menu' %}" class="">All Products</a>
+                {% for item in category %}
+                <a href="{% url 'getProduct' item.id %}" class="my-1 p-1">{{item.category_name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-9 mx-auto">
+            <div class="contanier-fluid mt-3">
+                <div class="row  mb-5">
+                   {% for item in product %} 
+                   <div class="card   p-2 mb-5" style="width: 18rem;">
+                       <img src="{{item.product_image.url}}" width="100px" height="150px" class="card-img-top zoom" alt="...">
+                       <div class="card-body">
+                         <h5 class="card-title">{{item.product_name}}</h5>
+                         <p class="card-text"><b>Rs.{{item.product_price}}</b></p>
+                         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                       </div>
+                     </div>
+                     {% endfor %}
+                </div>
+               </div>
+        </div>
+       </div>
+       
+
+
+        {% endblock %}
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/lib/easing/easing.min.js"></script>
+        <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/static/lib/tempusdominus/js/moment.min.js"></script>
+        <script src="/static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        
+        <!-- Contact Javascript File -->
+        <script src="/static/mail/jqBootstrapValidation.min.js"></script>
+        <script src="/static/mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="/static/js/main.js"></script>
+    </body>
+</html>
